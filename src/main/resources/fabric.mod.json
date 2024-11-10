@@ -16,21 +16,10 @@
 	"icon": "assets/villager-drops/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"main": [
-			"top.offsetmonkey538.villagerdrops.VillagerDrops"
-		],
-		"client": [
-			"top.offsetmonkey538.villagerdrops.VillagerDropsClient"
-		]
 	},
 	"mixins": [
-		"villager-drops.mixins.json",
-		{
-			"config": "villager-drops.client.mixins.json",
-			"environment": "client"
-		}
+		"villager-drops.mixins.json"
 	],
-	"accessWidener": "villager-drops.accesswidener",
 	"depends": {
 		"minecraft": "${supportedMinecraftVersions}"
 	}

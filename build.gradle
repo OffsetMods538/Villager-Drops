@@ -25,17 +25,6 @@ outlet {
 
 
 loom {
-	splitEnvironmentSourceSets()
-
-	mods {
-		modid {
-			sourceSet sourceSets.main
-			sourceSet sourceSets.client
-		}
-	}
-
-	accessWidenerPath = file("src/main/resources/villager-drops.accesswidener")
-
 	runs {
 		server {
 			runDir "run/server"
@@ -125,7 +114,7 @@ jar {
 
 modrinth {
 	token = System.getenv("MODRINTH_TOKEN")
-	projectId = "villager-drops"
+	projectId = "villagerdrops"
 	def customVersionName = System.getenv("VERSION_NAME")
 	if (customVersionName != null) versionName = customVersionName
 	versionNumber = "${project.version}"
