@@ -1,0 +1,16 @@
+{
+  "mappings": {
+    "io/github/offsetmonkey538/villager_drops/mixin/VillagerEntityMixin": {
+      "onDeath": "Lnet/minecraft/class_1646;method_6078(Lnet/minecraft/class_1282;)V",
+      "afterUsing": "Lnet/minecraft/class_1646;method_18008(Lnet/minecraft/class_1914;)V"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "io/github/offsetmonkey538/villager_drops/mixin/VillagerEntityMixin": {
+        "onDeath": "Lnet/minecraft/class_1646;method_6078(Lnet/minecraft/class_1282;)V",
+        "afterUsing": "Lnet/minecraft/class_1646;method_18008(Lnet/minecraft/class_1914;)V"
+      }
+    }
+  }
+}

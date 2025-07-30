@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.offsetmonkey538.villager_drops.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "VillagerEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "refmap": "villager-drops-refmap.json"
+}

@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "villagerdrops",
+  "version": "1.0.0",
+  "name": "Villager Drops",
+  "description": "Makes villagers drop their inventory when killed.",
+  "authors": [
+    "OffsetMonkey538"
+  ],
+  "contact": {
+    "sources": "https://github.com/OffsetMonkey538/Random-Minecraft-Ideas",
+    "issues": "https://github.com/OffsetMonkey538/Random-Minecraft-Ideas/issues"
+  },
+  "license": "MIT",
+  "icon": "assets/villagerdrops/icon.png",
+  "environment": "*",
+  "mixins": [
+    "villagerdrops.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": "*",
+    "minecraft": "*"
+  },
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/gyzk6JCVaN"
+      },
+      "parent": {
+        "id": "randomminecraftideas",
+        "name": "Random Minecraft Ideas",
+        "description": "Some random minecraft ideas, made into mods.",
+        "icon": "assets/randomminecraftideas/icon.png"
+      }
+    }
+  }
+}
