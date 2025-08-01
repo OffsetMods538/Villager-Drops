@@ -1,8 +1,11 @@
 package top.offsetmonkey538.villagerdrops.mixin;
 
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.InventoryOwner;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.passive.MerchantEntity;
+import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
@@ -15,9 +18,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(VillagerEntity.class)
-public abstract class VillagerEntityMixin extends MerchantEntity {
-    public VillagerEntityMixin(EntityType<? extends MerchantEntity> entityType, World world) {
+@Mixin(MerchantEntity.class)
+public abstract class MerchantEntityMixin extends PassiveEntity implements InventoryOwner {
+
+    protected MerchantEntityMixin(EntityType<? extends PassiveEntity> entityType, World world) {
         super(entityType, world);
     }
 
@@ -32,7 +36,7 @@ public abstract class VillagerEntityMixin extends MerchantEntity {
     }
 
     @Inject(
-            method = "afterUsing",
+            method = "trade",
             at = @At("TAIL")
     )
     private void villagerdrops$addHalfTradeItemsToInventory(TradeOffer offer, CallbackInfo ci) {
