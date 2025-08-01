@@ -6,6 +6,7 @@ import net.minecraft.entity.passive.MerchantEntity;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -25,7 +26,9 @@ public abstract class VillagerEntityMixin extends MerchantEntity {
             at = @At("TAIL")
     )
     private void villagerdrops$dropInventoryStacksOnDeath(DamageSource damageSource, CallbackInfo ci) {
-        this.getInventory().clearToList().forEach(this::dropStack);
+        if (!(this.getWorld() instanceof final ServerWorld world)) return;
+
+        this.getInventory().clearToList().forEach(stack -> this.dropStack(world, stack));
     }
 
     @Inject(
@@ -33,8 +36,8 @@ public abstract class VillagerEntityMixin extends MerchantEntity {
             at = @At("TAIL")
     )
     private void villagerdrops$addHalfTradeItemsToInventory(TradeOffer offer, CallbackInfo ci) {
-        villagerdrops$handleAddingItemStackToInventory(offer.getAdjustedFirstBuyItem());
-        villagerdrops$handleAddingItemStackToInventory(offer.getSecondBuyItem());
+        villagerdrops$handleAddingItemStackToInventory(offer.getDisplayedFirstBuyItem());
+        villagerdrops$handleAddingItemStackToInventory(offer.getDisplayedSecondBuyItem());
     }
 
     @Unique
