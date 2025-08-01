@@ -9,13 +9,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.storage.ReadView;
 import net.minecraft.storage.WriteView;
 import net.minecraft.util.dynamic.Codecs;
+import top.offsetmonkey538.villagerdrops.mixin.ItemStackAccessor;
 
 public class InfiniteCapacityInventory extends SimpleInventory {
     private static final Codec<ItemStack> INFINITE_COUNT_ITEM_CODEC = RecordCodecBuilder.create(
             instance -> instance.group(
                     Item.ENTRY_CODEC.fieldOf("id").forGetter(ItemStack::getRegistryEntry),
                     Codecs.rangedInt(1, Integer.MAX_VALUE).fieldOf("count").orElse(1).forGetter(ItemStack::getCount),
-                    ComponentChanges.CODEC.optionalFieldOf("components", ComponentChanges.EMPTY).forGetter(stack -> stack.components.getChanges())
+                    ComponentChanges.CODEC.optionalFieldOf("components", ComponentChanges.EMPTY).forGetter(stack -> ((ItemStackAccessor) (Object) stack).villagerdrops$getMergedComponentsMap().getChanges())
             ).apply(instance, ItemStack::new)
     );
 

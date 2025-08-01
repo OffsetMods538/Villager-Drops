@@ -3,6 +3,7 @@
   "package": "top.offsetmonkey538.villagerdrops.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "ItemStackAccessor",
     "MerchantEntityMixin"
   ],
   "injectors": {
