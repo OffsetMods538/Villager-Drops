@@ -6,8 +6,6 @@ import net.minecraft.component.ComponentChanges;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.storage.ReadView;
-import net.minecraft.storage.WriteView;
 import net.minecraft.util.dynamic.Codecs;
 import top.offsetmonkey538.villagerdrops.mixin.ItemStackAccessor;
 
@@ -43,11 +41,11 @@ public class InfiniteCapacityInventory extends SimpleInventory {
         return false;
     }
 
-    public void read(final ReadView view, final String key) {
-        view.getOptionalTypedListView(key, INFINITE_COUNT_ITEM_CODEC).ifPresent(this::readDataList);
+    public void read(final Object readView, final String key) {
+        //view.getOptionalTypedListView(key, INFINITE_COUNT_ITEM_CODEC).ifPresent(this::readDataList);
     }
 
-    public void write(final WriteView view, final String key) {
-        this.toDataList(view.getListAppender(key, INFINITE_COUNT_ITEM_CODEC));
+    public void write(final Object writeView, final String key) {
+        //this.toDataList(view.getListAppender(key, INFINITE_COUNT_ITEM_CODEC));
     }
 }
